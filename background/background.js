@@ -1,7 +1,7 @@
 browser.commands.onCommand.addListener(function (command) {
     if (command == "execute_copy_to_clipboard") {
         browser.tabs.executeScript({
-            file: "content.js"            
+            file: "../content.js"            
         });
     }
 });

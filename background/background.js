@@ -1,7 +1,18 @@
+function setToStorage(text) {
+    let storage = localStorage.getItem('copies');
+    if (storage === null) {
+        storage = "[]";
+    }
+    let storageParsed = JSON.parse(storage);
+    storageParsed.push({
+        copy: text
+    });
+    localStorage.setItem('copies', JSON.stringify(storageParsed));
+}
 function handleMessage(request, sender, sendResponse) {
-    sendResponse({ response: "User selected text copied to database" });    
+    sendResponse({ response: "User selected text copied to database" });
     console.log(request.text);
-    localStorage.setItem("copy", request.text);
+    setToStorage(request.text);
 }
 
 browser.runtime.onMessage.addListener(handleMessage);

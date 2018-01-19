@@ -1,21 +1,20 @@
-function fromBackground(page) {
-    page.fireMessage();    
+function getObjectValue(arrayFromBackground) {
+    for (var firstItemInArray = 0; firstItemInArray < arrayFromBackground.length; firstItemInArray++) {
+        var p = document.createElement("p");
+        console.log(arrayFromBackground[firstItemInArray].copy);
+        p.textContent = arrayFromBackground[firstItemInArray].copy;
+        document.getElementById("copiedText").insertAdjacentElement("afterbegin", p);
+    }
+}
+
+function fromBackground(storage) {
+    var itemsFromBackground = JSON.parse(storage.getFromStorage());
+    getObjectValue(itemsFromBackground);
 }
 
 function onError(error) {
-    console.log(`Error: ${error}`)
+    console.log("Error: " + error)
 }
 
-// var gettingPage = browser.runtime.getBackgroundPage();
-// gettingPage.then(fromBackground, onError)
-
-// let fromContent = "";
-// function handleMessage(request, sender, sendResponse) {
-//     document.getElementById("copiedText").textContent = request.greeting;
-//     sendResponse({ response: "fromStorage" });
-// }
-
-// browser.runtime.onMessage.addListener(handleMessage);
-
-// let gettingItem = browser.storage.local.get();
-// gettingItem.then(onGot, onError);
+var gettingPage = browser.runtime.getBackgroundPage();
+gettingPage.then(fromBackground, onError);

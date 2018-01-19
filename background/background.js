@@ -1,13 +1,16 @@
-function setToStorage(text) {
-    let storage = localStorage.getItem('copies');
+function setToStorage(userSelectedText) {
+    var storage = getFromStorage();
     if (storage === null) {
         storage = "[]";
     }
-    let storageParsed = JSON.parse(storage);
+    var storageParsed = JSON.parse(storage);
     storageParsed.push({
-        copy: text
+        copy: userSelectedText
     });
     localStorage.setItem('copies', JSON.stringify(storageParsed));
+}
+function getFromStorage() {
+    return localStorage.getItem('copies');
 }
 function handleMessage(request, sender, sendResponse) {
     sendResponse({ response: "User selected text copied to database" });
@@ -18,7 +21,7 @@ function handleMessage(request, sender, sendResponse) {
 browser.runtime.onMessage.addListener(handleMessage);
 
 browser.commands.onCommand.addListener(function (command) {
-    if (command == "execute_copy_to_clipboard") {
+    if (command === "execute_copy_to_clipboard") {
         browser.tabs.executeScript({
             file: "content.js"
         });
@@ -31,7 +34,7 @@ browser.contextMenus.create({
     contexts: ["selection"]
 });
 
-browser.contextMenus.onClicked.addListener(function (info, tab) {
+browser.contextMenus.onClicked.addListener(function (info) {
     switch (info.menuItemId) {
         case "log-selection":
             browser.tabs.executeScript({

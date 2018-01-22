@@ -8,11 +8,14 @@
 
 <body>
     <div id="popupContent">
-        <h3 id="h3">ClipBoard Manager</h3>
+        <h3 id="title">ClipBoard Manager</h3>
+        <h4 id="subTitle">Copies:</h4>
+        <div id="addCopy">
+            <label for="textForCopy">Dodaj tekst</label>
+            <input type="text" name="inputField" id="textForCopy">
+            <input type="button" value="Add Copy">
+        </div>
         <div id="copiedText"></div>
-    </div>
-    <div id="errorContent" class="hidden">
-        <p>Something is wrong</p>
     </div>
     <script src="cbmngPopup.js"></script>
 </body>

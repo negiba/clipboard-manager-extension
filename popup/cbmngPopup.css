@@ -1,16 +1,20 @@
 html,
 body {
-    background-color: #f1f1f1;
+    background-color: white;
     width: 200px;
-    height: 300px;
+    height: 400px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-h3 {
+#title {
     text-align: center;
 }
-.hidden {
-    display: none;
+
+#subTitle {
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #213aa9;
 }
+
 

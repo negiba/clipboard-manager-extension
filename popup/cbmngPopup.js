@@ -1,20 +1,49 @@
-function getObjectValue(arrayFromBackground) {
-    for (var firstItemInArray = 0; firstItemInArray < arrayFromBackground.length; firstItemInArray++) {
-        var p = document.createElement("p");
-        console.log(arrayFromBackground[firstItemInArray].copy);
-        p.textContent = arrayFromBackground[firstItemInArray].copy;
-        document.getElementById("copiedText").insertAdjacentElement("afterbegin", p);
-    }
+var gettingPage = browser.runtime.getBackgroundPage();
+gettingPage.then(getStorageFromBackgroundScript, onError);
+
+function getStorageFromBackgroundScript(storage) {
+    var storageParsed = JSON.parse(storage.getFromStorage());
+    transformStorageToListOfItems(storageParsed);
 }
 
-function fromBackground(storage) {
-    var itemsFromBackground = JSON.parse(storage.getFromStorage());
-    getObjectValue(itemsFromBackground);
+function transformStorageToListOfItems(parsed) {
+    for (var itemInParsed = 0; itemInParsed < parsed.length; itemInParsed++) {
+        var p = document.createElement("p");
+        console.log(parsed[itemInParsed].copy);
+        p.setAttribute("class", "elementFromCopies");
+        p.textContent = parsed[itemInParsed].copy;
+        document.getElementById("copiedText").insertAdjacentElement("afterbegin", p);
+    }
 }
 
 function onError(error) {
     console.log("Error: " + error)
 }
 
-var gettingPage = browser.runtime.getBackgroundPage();
-gettingPage.then(fromBackground, onError);
+function showListOfItems() {
+
+}
+
+function createItem() {
+
+}
+
+function editItem() {
+
+}
+
+function deleteItem() {
+
+}
+
+function packItemsForSaving() {
+    
+}
+
+function sendPackedItemsToBackgroundScript() {
+    
+}
+
+function sendSelectedCopyToContentScript() {
+    
+}

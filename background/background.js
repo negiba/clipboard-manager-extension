@@ -9,24 +9,22 @@ function setToStorage(userSelectedText) {
     });
     localStorage.setItem('copies', JSON.stringify(storageParsed));
 }
+
 function getFromStorage() {
     return localStorage.getItem('copies');
 }
-function handleMessage(request, sender, sendResponse) {
-    sendResponse({ response: "User selected text copied to database" });
+
+function getTextFromContentScript(request, sender, sendResponse) {
+    sendResponse({
+        response: "User selected text copied to database"
+    });
     console.log(request.text);
     setToStorage(request.text);
 }
 
-browser.runtime.onMessage.addListener(handleMessage);
+browser.runtime.onMessage.addListener(getTextFromContentScript);
 
-browser.commands.onCommand.addListener(function (command) {
-    if (command === "execute_copy_to_clipboard") {
-        browser.tabs.executeScript({
-            file: "content.js"
-        });
-    }
-});
+
 
 browser.contextMenus.create({
     id: "log-selection",
@@ -34,12 +32,22 @@ browser.contextMenus.create({
     contexts: ["selection"]
 });
 
-browser.contextMenus.onClicked.addListener(function (info) {
-    switch (info.menuItemId) {
-        case "log-selection":
-            browser.tabs.executeScript({
-                file: "content.js"
-            });
-            break;
-    }
-});
+function callContentScript() {
+    browser.tabs.executeScript({
+        file: "content.js"
+    });
+}
+
+(function waitForUserToSaveSelectedText() {
+    browser.commands.onCommand.addListener(function (command) {
+        if (command === "execute_copy_to_clipboard") {
+            callContentScript();
+        }
+    });
+    browser.contextMenus.onClicked.addListener(function (info) {
+        if (info.menuItemId === "log-selection") {
+            callContentScript();
+        }
+    });
+})();
+

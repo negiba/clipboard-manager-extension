@@ -1,4 +1,5 @@
 console.log("usao");
+
 function getUserSelectedText() {
     return window.getSelection().toString();
 }
@@ -17,11 +18,17 @@ function handleError(error) {
     }).then(handleResponse, handleError);
 })();
 
-function getTextFromPopupScript() {
-    
+function getTextFromPopupScript(request, sender, sendResponse) {
+    pasteText(request.userCopy);
+
 }
 
-function pasteText() {
-    
+browser.runtime.onMessage.addListener(getTextFromPopupScript);
+
+
+function pasteText(text) {
+    if (document.activeElement.localName === "input") {
+        document.activeElement.textContent = text;
+    }
 }
 

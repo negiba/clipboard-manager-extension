@@ -1,4 +1,12 @@
 console.log("usao");
+var focusedElement;
+document.body.addEventListener("focus", function (ev) {
+    console.log(ev.target.id);
+    if (ev.target.localName === "input" || ev.target.localName === "textarea") {
+        focusedElement = ev.target.id;
+    }
+
+}, true);
 
 function getUserSelectedText() {
     return window.getSelection().toString();
@@ -27,8 +35,6 @@ browser.runtime.onMessage.addListener(getTextFromPopupScript);
 
 
 function pasteText(text) {
-    if (document.activeElement.localName === "input") {
-        document.activeElement.textContent = text;
-    }
+    document.getElementById(focusedElement).textContent = text;
 }
 

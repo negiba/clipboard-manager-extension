@@ -1,3 +1,10 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     background-color: white;
     width: 200px;
@@ -16,8 +23,20 @@ body {
     color: #213aa9;
 }
 
-#copiedText p:hover {
+#addCopy input {
+    background: url(/icons/add.png) right no-repeat;
+    width: 90%;
+    /*cursor: pointer;*/
+}
+
+#copiedText td:hover {
     cursor: pointer;
     background-color: #f1f1f1;
+}
+.rows {
+    width: 90%;
+}
+.elementFromCopies {
+    max-width: 200px;
 }
 

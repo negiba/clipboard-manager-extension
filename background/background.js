@@ -1,12 +1,13 @@
 function setToStorage(userSelectedText) {
+    var url = userSelectedText.split(">");
+    var copyObject = {};
+    copyObject[url[0]] = url[1];
     var storage = getFromStorage();
     if (storage === null) {
         storage = "[]";
     }
     var storageParsed = JSON.parse(storage);
-    storageParsed.push({
-        copy: userSelectedText
-    });
+    storageParsed.push(copyObject);
     localStorage.setItem('copies', JSON.stringify(storageParsed));
 }
 
@@ -34,7 +35,7 @@ browser.contextMenus.create({
 
 function callContentScript() {
     browser.tabs.executeScript({
-        file: "content.js"
+        file: "copyContent.js"
     });
 }
 

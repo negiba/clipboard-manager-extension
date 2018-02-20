@@ -8,27 +8,10 @@ document.body.addEventListener("focus", function (ev) {
 
 }, true);
 
-function getUserSelectedText() {
-    return window.getSelection().toString();
-}
 
-function handleResponse(message) {
-    console.log("Message from the background script:" + message.response);
-}
-
-function handleError(error) {
-    console.log("Error: " + error);
-}
-
-(function sendTextToBackgroundScript() {
-    browser.runtime.sendMessage({
-        text: getUserSelectedText()
-    }).then(handleResponse, handleError);
-})();
 
 function getTextFromPopupScript(request, sender, sendResponse) {
     pasteText(request.userCopy);
-
 }
 
 browser.runtime.onMessage.addListener(getTextFromPopupScript);

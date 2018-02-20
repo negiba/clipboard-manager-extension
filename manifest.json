@@ -41,7 +41,7 @@
         },
         "execute_copy_to_clipboard": {
             "suggested_key": {
-                "default": "Alt+Shift+Y"
+                "default": "Ctrl+Shift+U"
             }
         }
     }

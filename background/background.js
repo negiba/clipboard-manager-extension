@@ -1,14 +1,19 @@
 function setToStorage(userSelectedText) {
-    var url = userSelectedText.split(">");
-    var copyObject = {};
-    copyObject[url[0]] = url[1];
-    var storage = getFromStorage();
-    if (storage === null) {
-        storage = "[]";
+    if (Array.isArray(userSelectedText)) {
+        localStorage.setItem('copies', JSON.stringify(userSelectedText));
+    } else {
+        let url = userSelectedText.split(">");
+        let copyObject = {};
+        copyObject[url[0]] = url[1];
+        let storage = getFromStorage();
+        if (storage === null) {
+            storage = "[]";
+        }
+        let storageParsed = JSON.parse(storage);
+        storageParsed.push(copyObject);
+        localStorage.setItem('copies', JSON.stringify(storageParsed));
     }
-    var storageParsed = JSON.parse(storage);
-    storageParsed.push(copyObject);
-    localStorage.setItem('copies', JSON.stringify(storageParsed));
+
 }
 
 function getFromStorage() {
@@ -19,7 +24,6 @@ function getTextFromContentScript(request, sender, sendResponse) {
     sendResponse({
         response: "User selected text copied to database"
     });
-    console.log(request.text);
     setToStorage(request.text);
 }
 

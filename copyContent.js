@@ -1,18 +1,19 @@
-function getUserSelectedText() {
+let CopyScript = (function () {
+    let getUserSelectedText = function () {
+        if (document.getSelection().toString() !== '') {
+            return window.location.href + '>' + document.getSelection().toString();
+        }
+    };
 
-    return window.location.href + '>' + document.getSelection().toString();
-}
+    let sendTextToBackgroundScript = function () {
+        browser.runtime.sendMessage({
+            text: getUserSelectedText()
+        }).then(handleError);
+    };
 
-function handleResponse(message) {
-    console.log("Message from the background script:" + message.response);
-}
-
-function handleError(error) {
-    console.log("Error: " + error);
-}
-
-(function sendTextToBackgroundScript() {
-    browser.runtime.sendMessage({
-        text: getUserSelectedText()
-    }).then(handleResponse, handleError);
+    return {
+        toBackground: sendTextToBackgroundScript
+    }
 })();
+
+CopyScript.toBackground();

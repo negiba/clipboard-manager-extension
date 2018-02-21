@@ -1,42 +1,45 @@
 html {
     box-sizing: border-box;
 }
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
 
 body {
+    border: solid black 2px;
     background-color: white;
-    width: 200px;
-    height: 400px;
+    width: 300px;
+    height: 500px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-#title {
-    text-align: center;
+#logo {
+    margin-left: 15px;
+    width: 200px;
+    height: 200px;
 }
 
 #subTitle {
+    font-family: Impact, sans-serif;
     text-align: center;
-    background-color: #f1f1f1;
-    color: #213aa9;
+    background-color: #000;
+    color: #fff;
 }
 
 #addCopy input {
     background: url(/icons/add.png) right no-repeat;
-    width: 90%;
-    /*cursor: pointer;*/
+    width: 97%;
 }
 
 #copiedText td:hover {
     cursor: pointer;
     background-color: #f1f1f1;
 }
-.rows {
-    width: 90%;
+#copiedText {
+    width: 97%;
 }
 .elementFromCopies {
-    max-width: 200px;
+    width: 100%;
 }
-

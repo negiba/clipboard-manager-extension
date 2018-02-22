@@ -32,8 +32,8 @@ browser.runtime.onMessage.addListener(getTextFromContentScript);
 
 
 browser.contextMenus.create({
-    id: "log-selection",
-    title: "Save copy",
+    id: "save-to-cb",
+    title: "Save to Clipboard Manager",
     contexts: ["selection"]
 });
 
@@ -50,7 +50,7 @@ function callContentScript() {
         }
     });
     browser.contextMenus.onClicked.addListener(function (info) {
-        if (info.menuItemId === "log-selection") {
+        if (info.menuItemId === "save-to-cb") {
             callContentScript();
         }
     });

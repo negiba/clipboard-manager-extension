@@ -3,7 +3,7 @@
 __Opis__
  
     Ekstenzija treba da čuva korisničke kopije obeleženog teksta (bilo koja strana na webu) u local storage same
-    ekstenzije, kao i da ih prikazuje u popupu. Čuvanje kopije vršimo shortcutom (ctrl+alt+Z) ili odabirom opcije
+    ekstenzije, kao i da ih prikazuje u popupu. Čuvanje kopije vršimo shortcutom (ctrl+alt+U) ili odabirom opcije
     "Save to CBManager" nakon desnog klika. Popup se poziva klikom na ikonu ekstenzije ili shortcutom na tastaturi
     (ctrl+shift+Z). Maksimalno treba da prikaže 10 kopija po strani. Lepljenje kopije na željana mesta možemo izvršiti
     na poziv određenog shortcutu na tastaturi (ctrl+1, ctrl+2 itd) ili klikom na kopiju iz popupa.

@@ -22,9 +22,9 @@
                  "<all_urls>"
              ],
              "js": [
-                 "content.js"
+                 "content/content.js"
              ],
-             "run_at": "document_idle",
+             "run_at": "document_end",
              "all_frames": true
          }
      ],

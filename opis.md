@@ -4,9 +4,8 @@ __Opis__
  
     Ekstenzija treba da čuva korisničke kopije obeleženog teksta (bilo koja strana na webu) u local storage same
     ekstenzije, kao i da ih prikazuje u popupu. Čuvanje kopije vršimo shortcutom (ctrl+alt+U) ili odabirom opcije
-    "Save to CBManager" nakon desnog klika. Popup se poziva klikom na ikonu ekstenzije ili shortcutom na tastaturi
-    (ctrl+shift+Z). Maksimalno treba da prikaže 10 kopija po strani. Lepljenje kopije na željana mesta možemo izvršiti
-    na poziv određenog shortcutu na tastaturi (ctrl+1, ctrl+2 itd) ili klikom na kopiju iz popupa.
+    "Save to Clipboard Manager" nakon desnog klika. Popup se poziva klikom na ikonu ekstenzije ili shortcutom na tastaturi
+    (ctrl+shift+Y). Lepljenje kopije na željana mesta možemo izvršiti klikom na kopiju iz popupa.
 
 __Struktura__
 
@@ -24,16 +23,21 @@ __Struktura__
         popup.js
       - content
         content.js
+        copyContent.js
       - icons
         clipboard-32.png
-        clipboard-48.png        
+        clipboard-48.png
+        add.png
+        delete.png
+        edit.png
+        logo.png        
     
 __Background__
     
     Background skripte su dugoročne skripte, što znači da "žive" od trenutka instaliranja ektenzije do njenog
     deinstaliranja. Njihov zadatak je da obrađuju zahteve. U našoj ekstenziji ima zadatak da pozove content skriptu
     nakon određeneog događaja (ukoliko se na stranici obeleži tekst a zatim odabere opcija "Save to CBManager" nakon
-    desnog klika ili shortcutom ctrl+shift+Z) koja će vratiti obeleženi tekst korisnika. Dobijeni tekst čuva se u 
+    desnog klika ili shortcutom ctrl+shift+Y) koja će vratiti obeleženi tekst korisnika. Dobijeni tekst čuva se u 
     local storage. 
 
 __Content__
@@ -53,54 +57,8 @@ __Popup__
     brisanje, uređivanje). Komunikacija sa content skriptom je jednosmerna, što znači da joj popup skripta šalje
     izabranu opciju iz sadržaja (text) koji content skripta dalje obrađuje.
         
-__Metode__
-    
-* Background
+__Update__
 
-        waitForUserToSaveSelectedText
-        callContentScript
-        getTextFromContentScript
-        saveToLocalStorage
-        getFromLocalStorage
-
-* Content
-        
-        getUserSelectedText
-        sendTextToBackgroundScript
-        getTextFromPopupScript
-        pasteText
-        
-* Popup
-        
-        getStorageFromBackgroundScript
-        transformStorageToListOfItems
-        showListOfItems
-        editItem
-        deleteItem
-        createItem        
-        packItemsForSaving
-        sendPackedItemsToBackground
-        sendSelectedCopyToContentScript
-        
-__TODO__
-
-* Popup
-
-        - prepraviti metodu transformStorageToListOfItems da vrati niz tekstova dobijenih iz storage
-        - uraditi metodu showListOfItems koja prikazuje u popupu niz iz metode transformStorageToListOfItems
-        - uraditi metodu editItem koja treba da omogući korisniku da menja izabrani tekst iz popupa
-        - uraditi metodu deleteItem koja treba da omogući korisniku da obriše izabrani tekst iz popupa
-        - uraditi metodu createItem koja treba da omogući korisniku da kreira kopiju sa željenim tekstom
-        - uraditi metodu packItemsForSaving koja treba da spakuje sve kopije u potreban format
-        - uraditi metodu sendPackedItemsToBackground koja treba da spakovane kopije pošalje background skripti na čuvanje
-        - uraditi metodu sendSelectedCopyToContentScript koja treba da pošalje tekst koji korisnik želi da nalepi
-
-* Content
-
-        - uraditi metodu getTextFromPopupScript koja treba da izvuče tekst koji je izabran od strane korisnika u prozoru popupa
-        - uraditi metodu pasteText koja treba da nalepi izvučeni tekst na željeno mesto
-        
-* Background
-
-        - prepraviti metodu saveToLocalStorage ili napisati dodatnu metodu koja bi prihvatala spakovan niz koji je
-        dobijen iz popup skripte a zatim sačuvala u local storage
+    Mogucnosti update-a ektenzije su usmerene na dodatna sitilizovanja popup stranice. Uvodjenje search polja za
+    pretragu sacuvanih kopija, paginacije kako bi izbegli skrolovanje. Najvaznije je sredjivanje prikaza dugackog teksta
+    kopije, u trenutnoj verziji predugacak tekst bi pokvario izgled popupa  

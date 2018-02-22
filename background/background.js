@@ -32,14 +32,14 @@ browser.runtime.onMessage.addListener(getTextFromContentScript);
 
 
 browser.contextMenus.create({
-    id: "save-to-cb",
+    id: "save-to-cbm",
     title: "Save to Clipboard Manager",
     contexts: ["selection"]
 });
 
 function callContentScript() {
     browser.tabs.executeScript({
-        file: "copyContent.js"
+        file: "content/copyContent.js"
     });
 }
 
@@ -50,7 +50,7 @@ function callContentScript() {
         }
     });
     browser.contextMenus.onClicked.addListener(function (info) {
-        if (info.menuItemId === "save-to-cb") {
+        if (info.menuItemId === "save-to-cbm") {
             callContentScript();
         }
     });

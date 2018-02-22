@@ -33,12 +33,15 @@ body {
     width: 97%;
 }
 
-#copiedText td:hover {
-    cursor: pointer;
-    background-color: #f1f1f1;
-}
 #copiedText {
-    width: 97%;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+.elementFromCopies:hover {
+    background-color: #000;
+    color: #fff;
 }
 .elementFromCopies {
     width: 100%;

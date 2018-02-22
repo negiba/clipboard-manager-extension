@@ -3,23 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clipboard Manager</title>
     <link rel="stylesheet" href="cbmngPopup.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="col-md-12" id="popupContent">
-        <div id="logoContent" class="col-md-12">
-            <img id="logo" src="/icons/logo.png" alt="">
-        </div>
-        <div class="row col-md-12"  id="addCopy">
-            <input type="text" name="inputField" id="textForCopy" placeholder="Add custom copy">
-        </div>
-        <h4 id="subTitle">COPIES:</h4>
-        <div>
-			<table id="copiedText"></table>
-		</div>
+<div class="container">
+    <div class="col-md-12" id="logoContent">
+        <img id="logo" src="/icons/logo.png" alt="LOGO">
     </div>
-    <script src="cbmngPopup.js"></script>
+    <div class="col-md-12" id="addCopy">
+        <input type="text" name="inputField" id="textForCopy" placeholder="Add custom copy">
+    </div>
+    <h4 id="subTitle">COPIES:</h4>
+    <div>
+        <table id="copiedText"></table>
+    </div>
+</div>
+<script src="cbmngPopup.js"></script>
 </body>
 </html>

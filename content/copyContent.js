@@ -1,7 +1,7 @@
 (function sendTextToBackgroundScript() {
     browser.runtime.sendMessage({
         text: getUserSelectedText()
-    }).then(handleError);
+    });
 })();
 
 function getUserSelectedText () {

@@ -13,7 +13,11 @@ let Popup = (function () {
         for (let itemInParsed = 0; itemInParsed < parsed.length; itemInParsed++) {
             privateStorage.push(parsed[itemInParsed]);
         }
-        showListOfItems(privateStorage);
+        // showListOfItems(privateStorage);
+    };
+
+    let getPrivateStorage = function () {
+        return privateStorage;
     };
 
     let showListOfItems = function (items) {
@@ -55,12 +59,14 @@ let Popup = (function () {
             });
 
         },
+        getElementsToShow: getPrivateStorage,
 
     };
 
 })();
 
 Popup.storage();
+console.log(Popup.getElementsToShow());
 
 
 document.getElementById('textForCopy').addEventListener('keypress', function (event) {
@@ -106,4 +112,15 @@ function sendSelectedCopyToContentScript(event) {
         let activeTab = tabs[0];
         browser.tabs.sendMessage(activeTab.id, {userCopy: event.target.textContent});
     });
+}
+
+function calcPagination(elementsPerPage) {
+    let elementsToShow = Popup.getElementsToShow();
+    let calcNumsOfPages = elementsToShow.length / elementsPerPage;
+
+    return elementsToShow.length % elementsPerPage !== 0 ? calcNumsOfPages + 1 : calcNumsOfPages;
+}
+
+function showPagination(numberOfPages) {
+    
 }

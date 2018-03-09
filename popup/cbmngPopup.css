@@ -46,3 +46,27 @@ body {
 .elementFromCopies {
     width: 100%;
 }
+.pagination {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.pagination input {
+    height: 20px;
+    width: 20px;
+    font-size: 9px;
+    color: #000;
+    text-align: center;
+    border: solid #000 1px;
+    border-radius: 100%;
+
+}
+
+.pagination input.active {
+    background-color: #000;
+    color: #fff;
+}
+
+.pagination input:hover:not(.active) {
+    background-color: #f1f1f1;
+}

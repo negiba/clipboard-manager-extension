@@ -13,14 +13,13 @@ function setToStorage(userSelectedText) {
         storageParsed.push(copyObject);
         localStorage.setItem('copies', JSON.stringify(storageParsed));
     }
-
 }
 
 function getFromStorage() {
     return localStorage.getItem('copies');
 }
 
-function getTextFromContentScript(request, sender, sendResponse) {
+function getTextFromContentScript(request, sendResponse) {
     sendResponse({
         response: "User selected text copied to database"
     });

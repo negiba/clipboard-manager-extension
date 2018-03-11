@@ -44,15 +44,31 @@ body {
     background-color: #000;
     color: #fff;
 }
+
 .elementFromCopies {
-    width: 100%;
+    width: 330px;
+    padding-right: 10px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.editElement {
+    height: 20px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+}
+
 .pagination {
     position: fixed;
     bottom: 0;
     width: 100%;
 }
+
 .pagination input {
+    padding: 0;
     margin: 5px;
     height: 20px;
     width: 20px;

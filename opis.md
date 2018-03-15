@@ -56,3 +56,14 @@ __Popup__
     background skripte dobijamo sadržaj storage, a takođe i vraćamo joj novi sadržaj ukoliko ima izmena (kreiranje,
     brisanje, uređivanje). Komunikacija sa content skriptom je jednosmerna, što znači da joj popup skripta šalje
     izabranu opciju iz sadržaja (text) koji content skripta dalje obrađuje.       
+
+_Instalacija_
+
+    Clipboard Manager se moze koristiti iskljucivo u browseru Mozilla Firefox. Ekstenzija je
+    trenutno u fazi razvoja pa je instalacija iste moguca kao test varijanta. Odabirom opcije Load Temporary Add-on
+    na adresi about:debugging#addons otvara se dijalog za ucitavanje fajla potrebnog za rad ekstenzije. U root
+    folderu ekstenzije izabrati fajl manifest.json. Ovim smo ucitali ekstenziju i mozemo je koristiti sve dok
+    je browser otvoren ili dok je rucno ne uklonimo sa vec pomenute adrese odabirom opcije remove. Ekstenizja
+    se koristi na sledeci nacin: nakon selektovanja teksta i desnog klika misem, biramo opciju Save to Clipboard Manager.
+    Selektovan tekst je sacuvan u bazi a klikom na ikonicu u gornjem desnom uglu browsera mozemo videti sacuvane kopije.
+    Lepljenje kopije u zeljena polja vrsimo klikom na kopiju iz liste.

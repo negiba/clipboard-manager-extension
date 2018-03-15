@@ -5,7 +5,7 @@
 })();
 
 function getUserSelectedText () {
-    if (document.getSelection().toString() !== '') {
+    if (document.getSelection().toString() !== '' && document.getSelection() !== undefined) {
         return window.location.href + '>' + document.getSelection().toString();
     }
-};
+}

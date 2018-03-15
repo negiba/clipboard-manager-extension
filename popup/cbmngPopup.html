@@ -6,24 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clipboard Manager</title>
     <link rel="stylesheet" href="cbmngPopup.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
-    <div class="col-md-12" id="logoContent">
-        <img id="logo" src="/icons/logo.png" alt="LOGO">
+    <div class="centered">
+        <input type="text" name="search" id="searchField" placeholder="Search for copy">
     </div>
-    <div class="col-md-12" id="addCopy">
-        <input type="text" name="inputField" id="textForCopy" placeholder="Add custom copy">
+    <div class="centered">
+        <div id="logoContent">
+            <img id="logo" src="/icons/logo.png" alt="LOGO">
+        </div>
     </div>
-    <h4 id="subTitle">COPIES:</h4>
-    <div>
-        <table id="copiedText"></table>
+    <div class="centered" id="about">
+        <h4 class="subTitle">Dobrodosli u Clipboard Manager</h4>
+        <p class="para">Clipboard Manager se moze koristiti iskljucivo u browseru Mozilla Firefox. Ekstenzija je
+            trenutno u fazi razvoja pa je instalacija iste moguca kao test varijanta. Odabirom opcije <i>Load Temporary Add-on</i>
+            na adresi <i>about:debugging#addons</i> otvara se dijalog za ucitavanje fajla potrebnog za rad ekstenzije. U root
+            folderu ekstenzije izabrati fajl <i>manifest.json</i>. Ovim smo ucitali ekstenziju i mozemo je koristiti sve dok
+            je browser otvoren ili dok je rucno ne uklonimo sa vec pomenute adrese odabirom opcije <i>remove</i>. Ekstenizja
+            se koristi na sledeci nacin: nakon selektovanja teksta i desnog klika misem, biramo opciju <i>Save to Clipboard Manager</i>.
+            Selektovan tekst je sacuvan u bazi a klikom na ikonicu u gornjem desnom uglu browsera mozemo videti sacuvane kopije.
+            Lepljenje kopije u zeljena polja vrsimo klikom na kopiju iz liste.
+        </p>
     </div>
-    <div class="pagination" id="pagination"></div>
+    <div id="content">
+        <div class="centered" id="addCopy">
+            <input type="text" name="inputField" id="textForCopy" placeholder="Add custom copy">
+        </div>
+        <div class="centered">
+            <h4 class="subTitle">COPIES:</h4>
+        </div>
+        <div class="centered">
+            <table id="copiedText"></table>
+        </div>
+        <div class="pagination" id="pagination"></div>
+    </div>
 </div>
+
+
 <script src="cbmngPopup.js"></script>
 </body>
 </html>

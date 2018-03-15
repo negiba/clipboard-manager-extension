@@ -10,8 +10,10 @@ let Popup = (function () {
     };
 
     let transformStorageToListOfItems = function (parsed) {
-        for (let itemInParsed = 0; itemInParsed < parsed.length; itemInParsed++) {
-            privateStorage.push(parsed[itemInParsed]);
+        if (parsed != null) {
+            for (let itemInParsed = 0; itemInParsed < parsed.length; itemInParsed++) {
+                privateStorage.push(parsed[itemInParsed]);
+            }
         }
         showListOfItems(1);
         showPagination();
@@ -31,7 +33,6 @@ let Popup = (function () {
         let sliced = sliceListOfItems(pageNumber);
         for (let item = 0; item < sliced.length; item++) {
             let tr = document.createElement("tr");
-            tr.setAttribute("class", "col-md-12");
             for (let key in sliced[item]) {
                 let tdCopy = tr.appendChild(document.createElement("td"));
                 let tdEdit = tr.appendChild(document.createElement("td"));
@@ -138,6 +139,64 @@ let Popup = (function () {
 
 Popup.storage();
 
+// about page
+document.getElementById("logo").addEventListener("click", function () {
+
+    if (document.getElementById("content").style.display == "none") {
+        document.getElementById("logo").setAttribute("src", "/icons/logo.png/");
+        document.getElementById("about").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    } else {
+        document.getElementById("logo").setAttribute("src", "/icons/logo-fliped.png/");
+        document.getElementById("about").style.display = "block";
+        document.getElementById("content").style.display = "none";
+    }
+
+});
+
+// search
+document.getElementById("searchField").addEventListener("keypress", function (event) {
+    if (event.key == "Enter") {
+        let searched = document.querySelector(".searched");
+        if (searched != null) {
+            document.querySelector(".searched").removeAttribute("class", "searched");
+        }
+        if (document.getElementById("searchField").value != "") {
+            findElement(document.getElementById("searchField").value);
+            document.getElementById("searchField").value = "";
+            document.getElementById("searchField").blur();
+        }
+    }
+});
+
+function findElement(chars) {
+    let items = Popup.getElementsToShow();
+    for (let item = 0; item < items.length; item++) {
+        for (let text in items[item]) {
+            if (items[item][text].toUpperCase() == chars.toUpperCase()) {
+                goToPage(item);
+            }
+        }
+    }
+}
+
+function goToPage(itemIndex) {
+    if (itemIndex < 10) {
+        document.getElementById("copiedText").rows[itemIndex].firstChild.setAttribute("class", "searched");
+    } else {
+        let tableIndex = Math.floor(itemIndex / 10) + 1;
+        let pages = document.querySelectorAll(".pageNums");
+        for (let i = 0; i < pages.length; i++) {
+            if (pages[i].value == tableIndex) {
+                let realIndex = (itemIndex) % (10 * (tableIndex - 1));
+                console.log(realIndex);
+                pages[i].click();
+                document.getElementById("copiedText").rows[realIndex].firstChild.setAttribute("class", "searched");
+            }
+        }
+    }
+}
+
 // Event pagination
 document.getElementById("pagination").addEventListener("click", function (event) {
     if (event.target.value !== undefined) {
@@ -164,7 +223,6 @@ function editItem() {
     let edit = document.createElement("input");
     edit.setAttribute("class", "editElement");
     edit.value = textToEdit;
-    // this.parentNode.replaceChild(edit, this.parentNode.firstChild);
     this.parentNode.firstChild.appendChild(edit);
     edit.focus();
 
@@ -181,11 +239,11 @@ function editItem() {
                 if (items == this.parentNode.parentNode.rowIndex + (Popup.getActive() - 1) * 10) {
                     for (let item in storage[items]) {
                         storage[items][item] = edit.value;
+                        location.reload();
                     }
                 }
             }
             Popup.setItems(storage);
-            location.reload();
         }
     });
 }

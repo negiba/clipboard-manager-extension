@@ -55,12 +55,4 @@ __Popup__
     potrebnu funkcionalnost popupa. Skripte u našem slučaju komuniciraju i sa content i sa background skriptom. Od
     background skripte dobijamo sadržaj storage, a takođe i vraćamo joj novi sadržaj ukoliko ima izmena (kreiranje,
     brisanje, uređivanje). Komunikacija sa content skriptom je jednosmerna, što znači da joj popup skripta šalje
-    izabranu opciju iz sadržaja (text) koji content skripta dalje obrađuje.
-        
-__Update__
-
-    Mogucnosti update-a ektenzije su usmerene na dodatna sitilizovanja popup stranice. Uvodjenje search polja za
-    pretragu sacuvanih kopija, paginacije kako bi izbegli skrolovanje. Najvaznije je sredjivanje prikaza dugackog teksta
-    kopije, u trenutnoj verziji predugacak tekst bi pokvario izgled popupa. Uvodjenje mogucnosti cavanja kopija po
-    grupama. Trenutno najveca mana ektenzije je sto nema opis rada, tj na koji nacin korisnik manipulise ektstenzijom.
-    Dakle, potrebno je dodati uputstvo za rad.
+    izabranu opciju iz sadržaja (text) koji content skripta dalje obrađuje.       

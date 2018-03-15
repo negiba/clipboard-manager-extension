@@ -3,7 +3,7 @@
     "name": "Testing popup for ClipBoard Manager",
     "version": "1.0",
     "icons": {
-        "48": "icons/cbmng-48.png"
+        "48": "icons/logo-48.png"
     },
     "permissions": [
         "activeTab",
@@ -29,7 +29,7 @@
          }
      ],
     "browser_action": {
-        "default_icon": "icons/cbmng-32.png",
+        "default_icon": "icons/logo-32.png",
         "default_title": "Testing",
         "default_popup": "popup/cbmngPopup.html"
     },
